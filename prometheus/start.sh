@@ -1,0 +1,1 @@
+docker run -d -p 9090:9090 -v /mnt/c/Users/nilsr/IdeaProjects/robot-shop/prometheus/etc/prometheus.yml:/etc/prometheus/prometheus.yml:Z -v /mnt/c/Users/nilsr/IdeaProjects/robot-shop/prometheus/data:/data/prometheus:Z prom/prometheus --config.file="/etc/prometheus/prometheus.yml" --storage.tsdb.path="/data/prometheus"

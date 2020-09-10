@@ -1,0 +1,91 @@
+version: '3'
+services:
+  mongodb:
+    build:
+      context: mongo
+    image: ${REPO}/rs-mongodb:${TAG}
+  redis:
+    image: redis:4.0.6
+  rabbitmq:
+    image: rabbitmq:3.7-management-alpine
+  catalogue:
+    build:
+      context: catalogue
+    image: ${REPO}/rs-catalogue:${TAG}
+    ports:
+      - "9292:9292"
+    environment:
+      SERVICE_9292_NAME: 'catalogue'
+    depends_on:
+      - mongodb
+  user:
+    build:
+      context: user
+    image: ${REPO}/rs-user:${TAG}
+    depends_on:
+      - mongodb
+      - redis
+  cart:
+    build:
+      context: cart
+    image: ${REPO}/rs-cart:${TAG}
+    ports:
+      - "9191:9191"
+    environment:
+      SERVICE_9191_NAME: 'cart'
+    depends_on:
+      - redis
+  mysql:
+    build:
+      context: mysql
+    image: ${REPO}/rs-mysql-db:${TAG}
+    cap_add:
+      - NET_ADMIN
+  shipping:
+    build:
+      context: shipping
+    image: ${REPO}/rs-shipping:${TAG}
+    depends_on:
+      - mysql
+  ratings:
+    build:
+      context: ratings
+    image: ${REPO}/rs-ratings:${TAG}
+    depends_on:
+      - mysql
+  payment:
+    build:
+      context: payment
+    image: ${REPO}/rs-payment:${TAG}
+    depends_on:
+      - rabbitmq
+    # Uncomment to change payment gateway
+    #environment:
+      #PAYMENT_GATEWAY: "https://www.worldpay.com"
+  dispatch:
+    build:
+      context: dispatch
+    image: ${REPO}/rs-dispatch:${TAG}
+    depends_on:
+      - rabbitmq
+  web:
+    build:
+      context: web
+    image: ${REPO}/rs-web:${TAG}
+    depends_on:
+      - catalogue
+      - user
+      - shipping
+      - payment
+      - cart
+    ports:
+      - "8080:8080"
+    environment:
+      SERVICE_80_IGNORE: 'yes'
+      SERVICE_8080_NAME: 'robotshop-admin_infra'
+
+    # Uncomment to enable Instana EUM
+    # environment:
+      # INSTANA_EUM_KEY: <your eum key>
+      # INSTANA_EUM_REPORTING_URL: https://eum-us-west-2.instana.io
+      # INSTANA_EUM_REPORTING_URL: https://eum-eu-west-1.instana.io

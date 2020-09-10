@@ -1,0 +1,26 @@
+{
+  "connect": {
+    "enabled": true
+  },
+
+  "service": {
+    "name": "web",
+    "port": 8080,
+    "connect": {
+      "sidecar_service": {
+        "proxy": {
+          "upstreams": [
+            {
+              "destination_name": "cart",
+              "local_bind_port": 9191
+            },
+            {
+              "destination_name": "catalogue",
+              "local_bind_port": 9292
+            }
+            ]
+        }
+      }
+    }
+  }
+}

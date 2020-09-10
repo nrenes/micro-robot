@@ -1,0 +1,17 @@
+{
+	"ulid": "01EE85QJ19DH3Y64ZR24A2860G",
+	"minTime": 1595844000000,
+	"maxTime": 1595851200000,
+	"stats": {
+		"numSamples": 241440,
+		"numSeries": 503,
+		"numChunks": 2012
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01EE85QJ19DH3Y64ZR24A2860G"
+		]
+	},
+	"version": 1
+}

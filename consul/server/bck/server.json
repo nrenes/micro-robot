@@ -1,0 +1,12 @@
+{
+  "bootstrap": true,
+  "ui": true,
+  "server": true,
+  "dns_config": {
+    "allow_stale": false
+    },
+  "data_dir": "/var/consul",
+  "connect": {
+    "enabled": true
+    }
+}

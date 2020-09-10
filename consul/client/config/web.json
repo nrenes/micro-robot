@@ -1,0 +1,14 @@
+{
+  "connect": {
+    "enabled": true
+  },
+  "service": {
+    "name": "web",
+    "id": "web-1",
+    "port": 8080,
+    "connect": {
+      "sidecar_service": {
+      }
+    }
+  }
+}

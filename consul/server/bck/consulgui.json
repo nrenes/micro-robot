@@ -1,0 +1,14 @@
+
+{
+  "service": {
+    "ID": "consul-server",
+    "Name": "gui",
+    "Address": "dashboard.127.0.0.1.xip.io",
+    "Port": 8888,
+    "check": {
+      "http": "http://dashboard.127.0.0.1.xip.io:8888",
+      "interval": "10s",
+      "timeout": "1s"
+    }
+  }
+}

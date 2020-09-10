@@ -1,0 +1,16 @@
+{
+  "id": "user1",
+  "name": "user",
+  "port": 8080,
+  "check": {
+    "id": "api",
+    "name": "HTTP API on port 8080",
+    "http": "https://localhost:8080/health",
+    "tls_skip_verify": true,
+    "method": "POST",
+    "header": {"Content-Type": ["application/json"]},
+    "body": "{\"method\":\"health\"}",
+    "interval": "10s",
+    "timeout": "1s"
+  }
+}

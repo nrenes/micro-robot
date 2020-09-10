@@ -1,0 +1,11 @@
+alive: server-1.dc1 192.168.176.2:8302
+alive: server-1.dc1 192.168.192.2:8302
+alive: server-1.dc1 192.168.208.2:8302
+alive: server-1.dc1 192.168.224.2:8302
+alive: server-1.dc1 192.168.240.2:8302
+alive: server-1.dc1 172.18.0.2:8302
+alive: server-1.dc1 172.19.0.2:8302
+alive: server-1.dc1 172.20.0.2:8302
+alive: server-1.dc1 172.21.0.2:8302
+alive: server-1.dc1 172.23.0.2:8302
+alive: server-1.dc1 172.24.0.2:8302

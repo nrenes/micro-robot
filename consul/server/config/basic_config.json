@@ -1,0 +1,9 @@
+{
+  "connect": {
+    "enabled": true
+  },
+  "dns_config": {
+    "enable_truncate": true,
+    "udp_answer_limit": 100
+  }
+}
